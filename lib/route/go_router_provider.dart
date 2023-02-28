@@ -18,11 +18,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
     navigatorKey: _rootNavigator,
     initialLocation: '/',
     routes: [
-      GoRoute(
-        path: '/home',
-        name: root,
-        builder: (context, state) => HomeScreen(key: state.pageKey),
-      ),
       ShellRoute(
         navigatorKey: _shellNavigator,
         builder: (context, state, child) =>
