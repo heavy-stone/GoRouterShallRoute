@@ -26,11 +26,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: '/',
             name: home,
-            pageBuilder: (context, state) {
-              return NoTransitionPage(
-                child: HomeScreen(key: state.pageKey),
-              );
-            },
+            pageBuilder: (context, state) => MaterialPage(
+              key: state.pageKey,
+              child: const HomeScreen(),
+            ),
           ),
           GoRoute(
             path: '/cart',
