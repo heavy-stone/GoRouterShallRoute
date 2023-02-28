@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shell_route/features/dashboard/presentation/controller/dashboard_controller.dart';
 
-class BottomNavigationWidget extends StatefulWidget {
+class BottomNavigationWidget extends ConsumerStatefulWidget {
   const BottomNavigationWidget({super.key});
 
   @override
-  State<BottomNavigationWidget> createState() => _BottomNavigationWidgetState();
+  ConsumerState<BottomNavigationWidget> createState() =>
+      _BottomNavigationWidgetState();
 }
 
-class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
+class _BottomNavigationWidgetState
+    extends ConsumerState<BottomNavigationWidget> {
   @override
   Widget build(BuildContext context) {
-    const position = 0;
+    final position = ref.watch(dashboardControllerProvider);
 
     return BottomNavigationBar(
       currentIndex: position,
@@ -37,6 +41,8 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   }
 
   void _onTap(int index) {
+    ref.read(dashboardControllerProvider.notifier).setPosition(index);
+
     switch (index) {
       case 0:
         context.go('location');
