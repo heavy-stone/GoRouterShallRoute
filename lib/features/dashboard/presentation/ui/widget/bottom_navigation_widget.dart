@@ -45,13 +45,13 @@ class _BottomNavigationWidgetState
 
     switch (index) {
       case 0:
-        context.go('location');
+        context.go('/');
         break;
       case 1:
-        context.go('location');
+        context.go('/cart');
         break;
       case 2:
-        context.go('location');
+        context.go('/setting');
         break;
       default:
     }
